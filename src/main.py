@@ -50,8 +50,8 @@ def analysis_fun(link1, link2, country):
     df_last.write.csv(output_path, header=True, mode="overwrite")
 
     return df_last
-
-countries = ["Netherlands", "United Kingdom"]
-file1 = r"C:\Users\wasim majanni\OneDrive\Desktop\DRJOB\Interviews prepare\ABN AMRO\codc-interviews\KommatiPara1\datasets\dataset_one2.csv"
-file2 = r"C:\Users\wasim majanni\OneDrive\Desktop\DRJOB\Interviews prepare\ABN AMRO\codc-interviews\KommatiPara1\datasets\dataset_two2.csv"
-df_clean = analysis_fun(file1, file2, countries)
+if __name__ == "__main__":
+    countries = ["Netherlands", "United Kingdom"]
+    file1 = r"datasets\dataset_one2.csv"
+    file2 = r"datasets\dataset_two2.csv"
+    df_clean = analysis_fun(file1, file2, countries)
