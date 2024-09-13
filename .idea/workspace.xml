@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="269c45f1-4f5c-4ae3-a9f2-4fdfa562d377" name="Changes" comment="Editing the file paths" />
+    <list default="true" id="269c45f1-4f5c-4ae3-a9f2-4fdfa562d377" name="Changes" comment="Editing the files paths" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,7 +140,7 @@
       <option name="presentableId" value="Default" />
       <updated>1726222966608</updated>
       <workItem from="1726222985400" duration="7000" />
-      <workItem from="1726229990624" duration="8911000" />
+      <workItem from="1726229990624" duration="10059000" />
     </task>
     <task id="LOCAL-00001" summary="main">
       <option name="closed" value="true" />
@@ -230,7 +230,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726238489793</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Editing the files paths">
+      <option name="closed" value="true" />
+      <created>1726258682224</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1726258682224</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +252,8 @@
     <MESSAGE value="Editing the workflow" />
     <MESSAGE value="Editing the test_analyser.py" />
     <MESSAGE value="Editing the file paths" />
-    <option name="LAST_COMMIT_MESSAGE" value="Editing the file paths" />
+    <MESSAGE value="Editing the files paths" />
+    <option name="LAST_COMMIT_MESSAGE" value="Editing the files paths" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/KommatiPara1$Doctest_analysis_fun.coverage" NAME="Doctest analysis_fun Coverage Results" MODIFIED="1726228938676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />

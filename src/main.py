@@ -45,7 +45,7 @@ def analysis_fun(link1, link2, country):
 
     logger.info("Perform a left join on the DataFrames using the renamed 'client_identifier' column")
     df_last = df_clients.join(df_account_info, df_clients["id"] == df_account_info["client_identifier"], how="inner").drop("id", "client_identifier")
-    output_path = r"..\client_data\output.csv"
+    output_path = r"client_data\output.csv"
     logger.info("Writing to CSV in client_data folder")
     df_last.write.csv(output_path, header=True, mode="overwrite")
 
