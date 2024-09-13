@@ -1,9 +1,9 @@
 from pyspark.sql import SparkSession
-from utils.analyser import filter_by_country,rename_columns
-from utils.log_manager import logger
+from src.utils.analyser import filter_by_country,rename_columns
+from log_manager import logger
+
+
 spark = SparkSession.builder.appName("data_filtering").getOrCreate()
-
-
 def analysis_fun(link1, link2, country):
     """
     Analyze client and account data by filtering, renaming columns, and performing a join operation.
@@ -45,9 +45,13 @@ def analysis_fun(link1, link2, country):
 
     logger.info("Perform a left join on the DataFrames using the renamed 'client_identifier' column")
     df_last = df_clients.join(df_account_info, df_clients["id"] == df_account_info["client_identifier"], how="inner").drop("id", "client_identifier")
-    output_path = r"..\client_data\dataset_one.csv"
+    output_path = r"..\client_data\output.csv"
     logger.info("Writing to CSV in client_data folder")
     df_last.write.csv(output_path, header=True, mode="overwrite")
 
     return df_last
 
+countries = ["Netherlands", "United Kingdom"]
+file1 = r"C:\Users\wasim majanni\OneDrive\Desktop\DRJOB\Interviews prepare\ABN AMRO\codc-interviews\KommatiPara1\datasets\dataset_one2.csv"
+file2 = r"C:\Users\wasim majanni\OneDrive\Desktop\DRJOB\Interviews prepare\ABN AMRO\codc-interviews\KommatiPara1\datasets\dataset_two2.csv"
+df_clean = analysis_fun(file1, file2, countries)

@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession, DataFrame
-from log_manager import logger
+from src.log_manager import logger
 from typing import List, Dict
 
 spark = SparkSession.builder.appName("data_filtering").getOrCreate()
@@ -25,11 +25,6 @@ def filter_by_country(df: DataFrame, countries: List[str]) -> DataFrame:
 
     """
     logger.info(f"Filtering DataFrame by countries: {countries}")
-
-    if 'country' not in df.columns:
-        logger.error("DataFrame does not contain a 'country' column")
-        raise ValueError("DataFrame does not contain a 'country' column")
-
     filtered_df: DataFrame  = df.filter(df.country.isin(countries))
 
     logger.info(f"Filtered DataFrame. Original count: {df.count()}, Filtered count: {filtered_df.count()}")
@@ -37,7 +32,7 @@ def filter_by_country(df: DataFrame, countries: List[str]) -> DataFrame:
     return filtered_df
 
 
-def rename_columns(df: DataFrame, rename_map: Dict[str, str]) -> DataFrame:
+def rename_columns(df1: DataFrame, rename_map: Dict[str, str]) -> DataFrame:
     """
     Rename columns in the DataFrame for easier readability for business users.
 
@@ -57,14 +52,14 @@ def rename_columns(df: DataFrame, rename_map: Dict[str, str]) -> DataFrame:
     """
     logger.info(f"Renaming columns: {rename_map}")
 
-    original_columns: List[str] = df.columns
+    original_columns: List[str] = df1.columns
 
     for old_name, new_name in rename_map.items():
-        if old_name in df.columns:
-            df = df.withColumnRenamed(old_name, new_name)
+        if old_name in df1.columns:
+            df1 = df1.withColumnRenamed(old_name, new_name)
         else:
             logger.warning(f"Column '{old_name}' not found in DataFrame. Skipping renaming.")
 
     logger.info(f"Columns renamed.")
 
-    return df
+    return df1
