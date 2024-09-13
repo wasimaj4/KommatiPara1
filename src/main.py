@@ -52,6 +52,6 @@ def analysis_fun(link1, link2, country):
     return df_last
 if __name__ == "__main__":
     countries = ["Netherlands", "United Kingdom"]
-    file1 = r"data_sets/dataset_one2.csv"
-    file2 = r"data_sets/dataset_two2.csv"
+    file1 = r"datasets/dataset_one2.csv"
+    file2 = r"datasets/dataset_two2.csv"
     df_clean = analysis_fun(file1, file2, countries)

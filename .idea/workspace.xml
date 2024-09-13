@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="269c45f1-4f5c-4ae3-a9f2-4fdfa562d377" name="Changes" comment="task three">
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/analyser.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/analyser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/log_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/log_manager.py" afterDir="false" />
-    </list>
+    <list default="true" id="269c45f1-4f5c-4ae3-a9f2-4fdfa562d377" name="Changes" comment="Editing the file paths" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,6 +25,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "wasimaj4"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/wasimaj4/KommatiPara1.git",
+    "accountId": "a7453bf9-74ab-4e35-941a-502b5a9a1eb1"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -47,12 +49,15 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python tests.Doctest analysis_fun.executor": "Debug",
-    "Python tests.Doctests in main.executor": "Debug",
+    "Python tests.Doctests in main.executor": "Run",
     "Python.Unnamed.executor": "Run",
     "Python.tester.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/wasim majanni/AppData/Local/Microsoft/WindowsApps/python3.12.exe",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/wasim majanni/AppData/Local/Microsoft/WindowsApps/python3.8.exe",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
@@ -135,6 +140,7 @@
       <option name="presentableId" value="Default" />
       <updated>1726222966608</updated>
       <workItem from="1726222985400" duration="7000" />
+      <workItem from="1726229990624" duration="8911000" />
     </task>
     <task id="LOCAL-00001" summary="main">
       <option name="closed" value="true" />
@@ -152,17 +158,97 @@
       <option name="project" value="LOCAL" />
       <updated>1726224394015</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Adding">
+      <option name="closed" value="true" />
+      <created>1726234004351</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1726234004351</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Editing the code">
+      <option name="closed" value="true" />
+      <created>1726234398414</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726234398414</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Editing the code">
+      <option name="closed" value="true" />
+      <created>1726234982982</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1726234982982</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Editing the workflow">
+      <option name="closed" value="true" />
+      <created>1726235263419</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1726235263419</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Editing the test_analyser.py">
+      <option name="closed" value="true" />
+      <created>1726235587670</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1726235587670</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Editing the test_analyser.py">
+      <option name="closed" value="true" />
+      <created>1726236010498</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1726236010498</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Editing the file paths">
+      <option name="closed" value="true" />
+      <created>1726236313220</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1726236313220</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Editing the file paths">
+      <option name="closed" value="true" />
+      <created>1726236574034</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1726236574034</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Editing the file paths">
+      <option name="closed" value="true" />
+      <created>1726238489793</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1726238489793</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="main" />
     <MESSAGE value="task three" />
-    <option name="LAST_COMMIT_MESSAGE" value="task three" />
+    <MESSAGE value="Adding" />
+    <MESSAGE value="Editing the code" />
+    <MESSAGE value="Editing the workflow" />
+    <MESSAGE value="Editing the test_analyser.py" />
+    <MESSAGE value="Editing the file paths" />
+    <option name="LAST_COMMIT_MESSAGE" value="Editing the file paths" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/KommatiPara1$Doctest_analysis_fun.coverage" NAME="Doctest analysis_fun Coverage Results" MODIFIED="1726228938676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/KommatiPara1$Doctests_in_main.coverage" NAME="Doctests in main Coverage Results" MODIFIED="1726229125430" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/KommatiPara1$tester.coverage" NAME="tester Coverage Results" MODIFIED="1726228442896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/KommatiPara1$Doctests_in_main.coverage" NAME="Doctests in main Coverage Results" MODIFIED="1726234266526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/KommatiPara1$tester.coverage" NAME="tester Coverage Results" MODIFIED="1726230252180" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>
