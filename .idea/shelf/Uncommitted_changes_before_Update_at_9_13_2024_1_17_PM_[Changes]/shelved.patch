@@ -1,0 +1,203 @@
+Index: src/main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from pyspark.sql import SparkSession\r\nfrom utils.analyser import filter_by_country,rename_columns\r\nfrom utils.log_manager import logger\r\nspark = SparkSession.builder.appName(\"data_filtering\").getOrCreate()\r\n\r\n\r\ndef analysis_fun(link1, link2, country):\r\n    \"\"\"\r\n    Analyze client and account data by filtering, renaming columns, and performing a join operation.\r\n\r\n    The function reads two CSV files, filters the clients by specified countries,\r\n    renames some columns in the account information, and performs an inner join between\r\n    the two DataFrames. The final cleaned DataFrame is saved to the `client_data` directory.\r\n\r\n    :param link1: str\r\n        Path to the CSV file containing client data.\r\n    :param link2: str\r\n        Path to the CSV file containing account information.\r\n    :param country: list of str\r\n        A list of countries to filter the clients by.\r\n\r\n    :return: :class:`pyspark.sql.DataFrame`\r\n        A cleaned and joined DataFrame with relevant client and account information.\r\n\r\n    :raises FileNotFoundError: If one of the CSV file paths is invalid.\r\n\r\n    :example:\r\n\r\n    >>> df = analysis_fun(\"clients.csv\", \"accounts.csv\", [\"United Kingdom\", \"Netherlands\"])\r\n    >>> df.show()\r\n\r\n    \"\"\"\r\n    logger.info(\"Read CSV files\")\r\n    df_clients = spark.read.csv(link1, header=True, inferSchema=True)\r\n    df_account_info = spark.read.csv(link2, header=True, inferSchema=True)\r\n    logger.info(\"Filtering and renaming\")\r\n    df_clients = filter_by_country(df_clients, country)\r\n\r\n    rename_map = {\"id\": \"client_identifier\", \"btc_a\": \"bitcoin_address\", \"cc_t\": \"credit_card_type\",\"cc_n\": \"credit_card_number\"}\r\n    df_account_info = rename_columns(df_account_info, rename_map)\r\n\r\n    logger.info(\"Drop unnecessary columns from both DataFrames\")\r\n    df_clients = df_clients.drop(\"first_name\", \"last_name\", \"country\")\r\n    df_account_info = df_account_info.drop(\"credit_card\")\r\n\r\n    logger.info(\"Perform a left join on the DataFrames using the renamed 'client_identifier' column\")\r\n    df_last = df_clients.join(df_account_info, df_clients[\"id\"] == df_account_info[\"client_identifier\"], how=\"inner\").drop(\"id\", \"client_identifier\")\r\n    output_path = r\"..\\client_data\\dataset_one.csv\"\r\n    logger.info(\"Writing to CSV in client_data folder\")\r\n    df_last.write.csv(output_path, header=True, mode=\"overwrite\")\r\n\r\n    return df_last\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main.py b/src/main.py
+--- a/src/main.py	(revision 4c6244b1c132d4ff6bb4f41189ef86c9ce9f690e)
++++ b/src/main.py	(date 1726225973462)
+@@ -1,6 +1,6 @@
+ from pyspark.sql import SparkSession
+-from utils.analyser import filter_by_country,rename_columns
+-from utils.log_manager import logger
++from src.utils.analyser import filter_by_country,rename_columns
++from src.utils.log_manager import logger
+ spark = SparkSession.builder.appName("data_filtering").getOrCreate()
+ 
+ 
+@@ -51,3 +51,8 @@
+ 
+     return df_last
+ 
++if __name__ == "__main__":
++    countries = ["Netherlands", "United Kingdom"]
++    file1 = r"datasets\dataset_one2.csv"
++    file2 = r"datasets\dataset_two2.csv"
++    df_clean = analysis_fun(file1, file2, countries)
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"269c45f1-4f5c-4ae3-a9f2-4fdfa562d377\" name=\"Changes\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 7\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2m0ogXtNuWSN0FXY1QhNnDeQCkD\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-PY-242.21829.153\" />\r\n        <option value=\"bundled-python-sdk-464836ebc622-b74155a9e76b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.21829.153\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"269c45f1-4f5c-4ae3-a9f2-4fdfa562d377\" name=\"Changes\" comment=\"\" />\r\n      <created>1726222966608</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1726222966608</updated>\r\n      <workItem from=\"1726222985400\" duration=\"7000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 4c6244b1c132d4ff6bb4f41189ef86c9ce9f690e)
++++ b/.idea/workspace.xml	(date 1726226220898)
+@@ -1,18 +1,37 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="269c45f1-4f5c-4ae3-a9f2-4fdfa562d377" name="Changes" comment="" />
++    <list default="true" id="269c45f1-4f5c-4ae3-a9f2-4fdfa562d377" name="Changes" comment="task three">
++      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/tests/tester.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Python Script" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="task-three" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="ProjectColorInfo"><![CDATA[{
+-  "associatedIndex": 7
+-}]]></component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 7
++}</component>
+   <component name="ProjectId" id="2m0ogXtNuWSN0FXY1QhNnDeQCkD" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+   <component name="ProjectViewState">
+@@ -21,8 +40,10 @@
+   </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
++    "Python.tester.executor": "Run",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "git-widget-placeholder": "master",
++    "node.js.selected.package.tslint": "(autodetect)",
+     "nodejs_package_manager_path": "npm",
+     "vue.rearranger.settings.migration": "true"
+   }
+@@ -45,6 +66,31 @@
+       <updated>1726222966608</updated>
+       <workItem from="1726222985400" duration="7000" />
+     </task>
++    <task id="LOCAL-00001" summary="main">
++      <option name="closed" value="true" />
++      <created>1726224296596</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1726224296596</updated>
++    </task>
++    <task id="LOCAL-00002" summary="task three">
++      <option name="closed" value="true" />
++      <created>1726224394015</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1726224394015</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="main" />
++    <MESSAGE value="task three" />
++    <option name="LAST_COMMIT_MESSAGE" value="task three" />
++  </component>
++  <component name="com.intellij.coverage.CoverageDataManagerImpl">
++    <SUITE FILE_PATH="coverage/KommatiPara1$tester.coverage" NAME="tester Coverage Results" MODIFIED="1726226093874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: requirements.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/requirements.txt b/requirements.txt
+new file mode 100644
+--- /dev/null	(date 1726224544183)
++++ b/requirements.txt	(date 1726224544183)
+@@ -0,0 +1,7 @@
++pandas~=2.2.2
++pytest
++ruff
++chispa~=0.10.1
++build
++mypy
++pyspark~=3.5.1
+Index: tests/tester.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tests/tester.py b/tests/tester.py
+new file mode 100644
+--- /dev/null	(date 1726225845453)
++++ b/tests/tester.py	(date 1726225845453)
+@@ -0,0 +1,51 @@
++import sys
++import os
++from pyspark.sql import SparkSession
++from chispa.dataframe_comparer import *
++from pyspark.sql.types import StructType, StructField, IntegerType, StringType, LongType, DoubleType
++from src.main import analysis_fun
++
++os.environ["PYSPARK_PYTHON"] = sys.executable
++os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable
++
++
++spark = (SparkSession.builder.master("local").appName("tester").getOrCreate())
++
++countries_test = ["Netherlands", "United Kingdom"]
++sample_data1 = [
++    (1, "John", "Doe", "john.doe@example.com", "Netherlands"),
++    (2, "Jane", "Smith", "jane.smith@example.com", "Canada"),
++    (3, "Michael", "Johnson", "michael.johnson@example.com", "United Kingdom"),
++    (4, "Emily", "Brown", "emily.brown@example.com", "Australia"),
++    (5, "David", "Lee", "david.lee@example.com", "United Kingdom")
++]
++
++sample_data1_schema = StructType([
++    StructField("id", IntegerType(), False),
++    StructField("first_name", StringType(), True),
++    StructField("last_name", StringType(), True),
++    StructField("email", StringType(), True),
++    StructField("country", StringType(), True)
++])
++
++
++df_one = spark.createDataFrame(sample_data1, schema=sample_data1_schema)
++
++sample_data2 = [
++    (1, "1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2", "VISA", 4532015112830366),
++    (2, "3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy", "MASTERCARD", 5425233430109903),
++    (3, "bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq", "AMEX", 374245455400126),
++    (4, "1BoatSLRHtKNngkdXEeobR76b53LETtpyT", "DISCOVER", 6011000990139424),
++    (5, "3E8ociqZa9mZUSwGdSmAEMAoAxBK3FNDcd", "VISA", 4916338506082832)
++]
++
++sample_data2_schema = StructType([
++    StructField("id", IntegerType(), False),
++    StructField("btc_a", StringType(), True),
++    StructField("cc_t", StringType(), True),
++    StructField("cc_n", LongType(), True)
++])
++
++df_two = spark.createDataFrame(sample_data2, schema=sample_data2_schema)
++
++analysis_fun(df_one,df_two,countries_test)
+\ No newline at end of file

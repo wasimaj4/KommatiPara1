@@ -35,8 +35,8 @@ def create_timed_rotating_log(path: str) -> logging.Logger:
 
 
 
-#current_dir = os.path.dirname(os.path.abspath(__file__))
-#log_file = os.path.join(current_dir, "logs", "current_log.log")
+current_dir = os.path.dirname(os.path.abspath(__file__))
+log_file = os.path.join(current_dir, "logs", "current_log.log")
 
 
-logger: logging.Logger = create_timed_rotating_log("../logs/current_log.log")
+logger: logging.Logger = create_timed_rotating_log(log_file)

@@ -44,6 +44,7 @@ def rename_columns(df1: DataFrame, rename_map: Dict[str, str]) -> DataFrame:
     :return: :class:`pyspark.sql.DataFrame`
         The DataFrame with renamed columns.
 
+
     :example:
 
     >>> rename_map = {"id": "client_identifier", "btc_a": "bitcoin_address"}
@@ -51,8 +52,6 @@ def rename_columns(df1: DataFrame, rename_map: Dict[str, str]) -> DataFrame:
 
     """
     logger.info(f"Renaming columns: {rename_map}")
-
-    original_columns: List[str] = df1.columns
 
     for old_name, new_name in rename_map.items():
         if old_name in df1.columns:
