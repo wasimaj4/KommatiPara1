@@ -17,7 +17,7 @@ This application is designed for KommatiPara, a small company dealing with bitco
 1. The application takes three command-line arguments:
    - Path to the client information dataset
    - Path to the financial details dataset
-   - Countries to filter (e.g., "United Kingdom,Netherlands")
+   - Countries to filter (e.g., ["United Kingdom","Netherlands"]
 
 2. It uses PySpark to efficiently process the large datasets:
    - Filters clients based on specified countries
@@ -35,7 +35,7 @@ python main.py <path_to_client_data> <path_to_financial_data> <countries_to_filt
 
 Example:
 ```
-python main.py ./data/client_data.csv ./data/financial_data.csv "United Kingdom,Netherlands"
+python main.py ./data/client_data.csv ./data/financial_data.csv ["United Kingdom","Netherlands"]
 ```
 
 ## Technical Details
