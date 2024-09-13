@@ -75,9 +75,10 @@ def test_filtering() -> None:
         StructField("email", StringType(), True),
         StructField("country", StringType(), True)
     ])
+    expected_df1 = spark.createDataFrame(expected_data1, schema=expected_data_schema1)
 
     logger.info("Asserting DataFrame equality")
-    assert_df_equality(actual_df1, expected_data1)
+    assert_df_equality(actual_df1, expected_df1)
 
     logger.info("Asserting schema equality")
     assert_schema_equality(actual_df1.schema, expected_data_schema1)
@@ -112,8 +113,10 @@ def test_renaming() -> None:
         StructField("account_type", StringType(), True),
         StructField("account_number", LongType(), True)
     ])
+
+    expected_df2 = spark.createDataFrame(expected_data2, schema=expected_data2_schema)
     logger.info("Asserting DataFrame equality")
-    assert_df_equality(actual_df2, expected_data2)
+    assert_df_equality(actual_df2, expected_df2)
     logger.info("Asserting schema equality")
     assert_schema_equality(actual_df2.schema, expected_data2_schema)
     logger.info("test_renaming function completed successfully")
