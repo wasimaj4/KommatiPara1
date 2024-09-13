@@ -107,7 +107,7 @@ def test_renaming() -> None:
 
 
     expected_data2_schema = StructType([
-        StructField("id", IntegerType(), False),
+        StructField("client_identifier", IntegerType(), False),
         StructField("bitcoin_address", StringType(), True),
         StructField("account_type", StringType(), True),
         StructField("account_number", LongType(), True)
