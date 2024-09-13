@@ -35,3 +35,36 @@ def filter_by_country(df: DataFrame, countries: List[str]) -> DataFrame:
     logger.info(f"Filtered DataFrame. Original count: {df.count()}, Filtered count: {filtered_df.count()}")
 
     return filtered_df
+
+
+def rename_columns(df: DataFrame, rename_map: Dict[str, str]) -> DataFrame:
+    """
+    Rename columns in the DataFrame for easier readability for business users.
+
+    :param df: :class:`pyspark.sql.DataFrame`
+        The input DataFrame whose columns need to be renamed.
+    :param rename_map: dict
+        A dictionary mapping old column names (keys) to new column names (values).
+
+    :return: :class:`pyspark.sql.DataFrame`
+        The DataFrame with renamed columns.
+
+    :example:
+
+    >>> rename_map = {"id": "client_identifier", "btc_a": "bitcoin_address"}
+    >>> df_renamed = rename_columns(df_account_info, rename_map)
+
+    """
+    logger.info(f"Renaming columns: {rename_map}")
+
+    original_columns: List[str] = df.columns
+
+    for old_name, new_name in rename_map.items():
+        if old_name in df.columns:
+            df = df.withColumnRenamed(old_name, new_name)
+        else:
+            logger.warning(f"Column '{old_name}' not found in DataFrame. Skipping renaming.")
+
+    logger.info(f"Columns renamed.")
+
+    return df
