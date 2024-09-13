@@ -36,9 +36,10 @@ def analysis_fun(link1, link2, country):
     logger.info("Filtering and renaming")
     df_clients = filter_by_country(df_clients, country)
 
-
-
+    rename_map = {"id": "client_identifier", "btc_a": "bitcoin_address", "cc_t": "credit_card_type","cc_n": "credit_card_number"}
+    df_account_info = rename_columns(df_account_info, rename_map)
 
     logger.info("Drop unnecessary columns from both DataFrames")
     df_clients = df_clients.drop("first_name", "last_name", "country")
     df_account_info = df_account_info.drop("credit_card")
+
