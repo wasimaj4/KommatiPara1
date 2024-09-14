@@ -27,16 +27,7 @@ This application is designed for KommatiPara, a small company dealing with bitco
 
 3. The processed data is saved in the 'client_data' directory within the project root.
 
-## Usage
 
-```
-python main.py <path_to_client_data> <path_to_financial_data> <countries_to_filter>
-```
-
-Example:
-```
-python main.py ./data/client_data.csv ./data/financial_data.csv ["United Kingdom","Netherlands"]
-```
 
 ## Technical Details
 
@@ -56,12 +47,6 @@ pytest tests/
 ## Distribution
 
 The application can be packaged into a source distribution file. To create the package:
-
-```
-python setup.py sdist
-```
-
-This will create a `.tar.gz` file in the `dist/` directory.
 
 ## Continuous Integration
 
