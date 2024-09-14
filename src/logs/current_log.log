@@ -1,10 +1,19 @@
 Read CSV files
+Read CSV files
+Read CSV files
+Filtering and renaming
 Filtering and renaming
 Filtering DataFrame by countries: ['Netherlands', 'United Kingdom']
+Filtering DataFrame by countries: ['Netherlands', 'United Kingdom']
+Filtered DataFrame. Original count: 1000, Filtered count: 100
 Filtered DataFrame. Original count: 1000, Filtered count: 100
 Renaming columns: {'id': 'client_identifier', 'btc_a': 'bitcoin_address', 'cc_t': 'credit_card_type', 'cc_n': 'credit_card_number'}
+Renaming columns: {'id': 'client_identifier', 'btc_a': 'bitcoin_address', 'cc_t': 'credit_card_type', 'cc_n': 'credit_card_number'}
+Columns renamed.
 Columns renamed.
 Drop unnecessary columns from both DataFrames
+Drop unnecessary columns from both DataFrames
+Perform a left join on the DataFrames using the renamed 'client_identifier' column
 Perform a left join on the DataFrames using the renamed 'client_identifier' column
 Writing to CSV in client_data folder
-Read CSV files
+Writing to CSV in client_data folder
